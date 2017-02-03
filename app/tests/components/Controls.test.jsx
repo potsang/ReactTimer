@@ -6,6 +6,9 @@ const TestUtils = require('react-addons-test-utils');
 
 const Controls = require('Controls');
 
+function test () {
+};
+
 describe('Controls', () => {
   it('should exist', () => {
     expect(Controls).toExist();
@@ -13,7 +16,7 @@ describe('Controls', () => {
 
   describe('render', () => {
     it('should render pause when started', () => {
-      var controls = TestUtils.renderIntoDocument(<Controls countdownStatus="started"/>);
+      var controls = TestUtils.renderIntoDocument(<Controls countdownStatus="started" onStatusChange={test}/>);
       var $el = $(ReactDOM.findDOMNode(controls));
       var $pauseButton = $el.find('button:contains(Pause)');
 
@@ -21,7 +24,7 @@ describe('Controls', () => {
     });
 
     it('should render start when paused', () => {
-      var controls = TestUtils.renderIntoDocument(<Controls countdownStatus="paused"/>);
+      var controls = TestUtils.renderIntoDocument(<Controls countdownStatus="paused" onStatusChange={test}/>);
       var $el = $(ReactDOM.findDOMNode(controls));
       var $startButton = $el.find('button:contains(Start)');
 
